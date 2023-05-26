@@ -10,6 +10,7 @@ import Foundation
 
 protocol AccountsRepo {
     func fetchAccounts() -> AnyPublisher<[APIAccount], RequestError>
+    func fetchAccountDetails(accountId: String) -> AnyPublisher<APIAccountDetails, RequestError>
 }
 
 class AccountsRepoImp: AccountsRepo {
@@ -17,5 +18,9 @@ class AccountsRepoImp: AccountsRepo {
 
     func fetchAccounts() -> AnyPublisher<[APIAccount], RequestError> {
         client.sendRequest(endpoint: AccountsEndpoint.accounts, responseType: [APIAccount].self)
+    }
+
+    func fetchAccountDetails(accountId: String) -> AnyPublisher<APIAccountDetails, RequestError> {
+        client.sendRequest(endpoint: AccountsEndpoint.accountDetails(accountId: accountId), responseType: APIAccountDetails.self)
     }
 }

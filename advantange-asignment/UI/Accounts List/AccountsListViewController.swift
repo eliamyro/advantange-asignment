@@ -48,12 +48,21 @@ class AccountsListViewController: UIViewController {
         viewModel.fetchAccounts()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.prefersLargeTitles = false
+    }
+
     // MARK: - Private Methods
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Accounts"
-        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     private func registerCells() {
@@ -67,6 +76,12 @@ class AccountsListViewController: UIViewController {
             self.accountsTableView.reloadData()
         }
         .store(in: &viewModel.cancellables)
+    }
+
+    func navigateToDetails(with account: APIAccount) {
+        let viewModel = AccountDetailsVM(account: account)
+        let accountDetailsController = AccountDetailsViewController(viewModel: viewModel)
+        navigationController?.show(accountDetailsController, sender: nil)
     }
 }
 
@@ -106,5 +121,10 @@ extension AccountsListViewController: UITableViewDataSource, UITableViewDelegate
         cell.setup(with: account)
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let account = viewModel.accounts[indexPath.row]
+        navigateToDetails(with: account)
     }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 enum AccountsEndpoint {
     case accounts
+    case accountDetails(accountId: String)
 }
 
 extension AccountsEndpoint: Endpoint {
@@ -20,12 +21,14 @@ extension AccountsEndpoint: Endpoint {
         switch self {
         case .accounts:
             return "/accounts"
+        case .accountDetails(let accountId):
+            return "/account/details/\(accountId)"
         }
     }
 
     var method: RequestMethod {
         switch self {
-        case .accounts:
+        case .accounts, .accountDetails:
             return .get
         }
     }

@@ -22,9 +22,8 @@ extension Endpoint {
     }
 
     var header: [String: String]? {
-        return ["Accept": "application/json",
-                "Authorization": "Basic QWR2YW50YWdlOm1vYmlsZUFzc2lnbm1lbnQ=",
-                "username": "Advantage",
-                "password": "mobileAssignment"]
+        return ["Content-Type": "application/json; charset=UTF-8",
+                "Connection": "keep-alivee",
+                "Authorization": "Basic \(Authorization.authorization())"]
     }
 }

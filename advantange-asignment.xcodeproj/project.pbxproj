@@ -27,6 +27,11 @@
 		818C78302A20B91A0048FFBB /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782F2A20B91A0048FFBB /* DependencyContainer.swift */; };
 		818C78322A20B9870048FFBB /* DInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78312A20B9870048FFBB /* DInjection.swift */; };
 		818C78342A20BA150048FFBB /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78332A20BA150048FFBB /* Injected.swift */; };
+		818C78362A20D9410048FFBB /* APIAccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78352A20D9410048FFBB /* APIAccountDetails.swift */; };
+		818C78382A20DAE20048FFBB /* FetchAccountDetailsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78372A20DAE20048FFBB /* FetchAccountDetailsUC.swift */; };
+		818C783B2A20DB780048FFBB /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */; };
+		818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */; };
+		818C783F2A20E5310048FFBB /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783E2A20E5310048FFBB /* Authorization.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +57,11 @@
 		818C782F2A20B91A0048FFBB /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
 		818C78312A20B9870048FFBB /* DInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DInjection.swift; sourceTree = "<group>"; };
 		818C78332A20BA150048FFBB /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		818C78352A20D9410048FFBB /* APIAccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAccountDetails.swift; sourceTree = "<group>"; };
+		818C78372A20DAE20048FFBB /* FetchAccountDetailsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAccountDetailsUC.swift; sourceTree = "<group>"; };
+		818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
+		818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsVM.swift; sourceTree = "<group>"; };
+		818C783E2A20E5310048FFBB /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				818C78142A20923C0048FFBB /* Cells */,
+				818C78392A20DB5B0048FFBB /* Account Details */,
 				818C780C2A20876B0048FFBB /* Accounts List */,
 			);
 			path = UI;
@@ -131,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				818C78122A208A230048FFBB /* APIAccount.swift */,
+				818C78352A20D9410048FFBB /* APIAccountDetails.swift */,
 			);
 			path = Codables;
 			sourceTree = "<group>";
@@ -159,6 +171,7 @@
 				818C781D2A20A8380048FFBB /* RequestMethod.swift */,
 				818C781F2A20A86D0048FFBB /* AccountsEndpoint.swift */,
 				818C78242A20ABE80048FFBB /* RequestError.swift */,
+				818C783E2A20E5310048FFBB /* Authorization.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -175,6 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				818C78272A20AC500048FFBB /* FetchAccountsUC.swift */,
+				818C78372A20DAE20048FFBB /* FetchAccountDetailsUC.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -195,6 +209,15 @@
 				818C78332A20BA150048FFBB /* Injected.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		818C78392A20DB5B0048FFBB /* Account Details */ = {
+			isa = PBXGroup;
+			children = (
+				818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */,
+				818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */,
+			);
+			path = "Account Details";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,16 +298,21 @@
 				818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */,
 				818C78192A20A17A0048FFBB /* UITableViewCell+Ext.swift in Sources */,
 				818C78302A20B91A0048FFBB /* DependencyContainer.swift in Sources */,
+				818C783B2A20DB780048FFBB /* AccountDetailsViewController.swift in Sources */,
 				818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */,
 				818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */,
 				818C782B2A20AC740048FFBB /* AccountsRepo.swift in Sources */,
+				818C78382A20DAE20048FFBB /* FetchAccountDetailsUC.swift in Sources */,
+				818C78362A20D9410048FFBB /* APIAccountDetails.swift in Sources */,
 				818C78342A20BA150048FFBB /* Injected.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
 				818C78252A20ABE80048FFBB /* RequestError.swift in Sources */,
+				818C783F2A20E5310048FFBB /* Authorization.swift in Sources */,
 				818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */,
 				818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */,
 				818C78202A20A86D0048FFBB /* AccountsEndpoint.swift in Sources */,
 				818C78162A20925E0048FFBB /* AccountCell.swift in Sources */,
+				818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
