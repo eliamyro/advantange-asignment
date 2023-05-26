@@ -13,6 +13,7 @@
 		818C78022A2085220048FFBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818C78012A2085220048FFBB /* Assets.xcassets */; };
 		818C78052A2085220048FFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818C78032A2085220048FFBB /* LaunchScreen.storyboard */; };
 		818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C780E2A2087A70048FFBB /* AccountsListVM.swift */; };
+		818C78132A208A230048FFBB /* APIAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78122A208A230048FFBB /* APIAccount.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		818C78042A2085220048FFBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		818C78062A2085220048FFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		818C780E2A2087A70048FFBB /* AccountsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListVM.swift; sourceTree = "<group>"; };
+		818C78122A208A230048FFBB /* APIAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAccount.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		818C77F72A2085200048FFBB /* advantange-asignment */ = {
 			isa = PBXGroup;
 			children = (
+				818C78102A2089FA0048FFBB /* Networking */,
 				818C780D2A20877C0048FFBB /* UI */,
 				818C77F82A2085200048FFBB /* AppDelegate.swift */,
 				818C77FA2A2085200048FFBB /* SceneDelegate.swift */,
@@ -81,6 +84,22 @@
 				818C780C2A20876B0048FFBB /* Accounts List */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		818C78102A2089FA0048FFBB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				818C78112A208A010048FFBB /* Codables */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		818C78112A208A010048FFBB /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				818C78122A208A230048FFBB /* APIAccount.swift */,
+			);
+			path = Codables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */,
+				818C78132A208A230048FFBB /* APIAccount.swift in Sources */,
 				818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */,
 				818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
