@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77F82A2085200048FFBB /* AppDelegate.swift */; };
 		818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FA2A2085200048FFBB /* SceneDelegate.swift */; };
-		818C77FD2A2085200048FFBB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FC2A2085200048FFBB /* ViewController.swift */; };
-		818C78002A2085200048FFBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818C77FE2A2085200048FFBB /* Main.storyboard */; };
+		818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FC2A2085200048FFBB /* AccountsListViewController.swift */; };
 		818C78022A2085220048FFBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 818C78012A2085220048FFBB /* Assets.xcassets */; };
 		818C78052A2085220048FFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818C78032A2085220048FFBB /* LaunchScreen.storyboard */; };
+		818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C780E2A2087A70048FFBB /* AccountsListVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		818C77F52A2085200048FFBB /* advantange-asignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advantange-asignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		818C77F82A2085200048FFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		818C77FA2A2085200048FFBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		818C77FC2A2085200048FFBB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		818C77FF2A2085200048FFBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		818C77FC2A2085200048FFBB /* AccountsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListViewController.swift; sourceTree = "<group>"; };
 		818C78012A2085220048FFBB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		818C78042A2085220048FFBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		818C78062A2085220048FFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		818C780E2A2087A70048FFBB /* AccountsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,31 @@
 		818C77F72A2085200048FFBB /* advantange-asignment */ = {
 			isa = PBXGroup;
 			children = (
+				818C780D2A20877C0048FFBB /* UI */,
 				818C77F82A2085200048FFBB /* AppDelegate.swift */,
 				818C77FA2A2085200048FFBB /* SceneDelegate.swift */,
-				818C77FC2A2085200048FFBB /* ViewController.swift */,
-				818C77FE2A2085200048FFBB /* Main.storyboard */,
 				818C78012A2085220048FFBB /* Assets.xcassets */,
 				818C78032A2085220048FFBB /* LaunchScreen.storyboard */,
 				818C78062A2085220048FFBB /* Info.plist */,
 			);
 			path = "advantange-asignment";
+			sourceTree = "<group>";
+		};
+		818C780C2A20876B0048FFBB /* Accounts List */ = {
+			isa = PBXGroup;
+			children = (
+				818C77FC2A2085200048FFBB /* AccountsListViewController.swift */,
+				818C780E2A2087A70048FFBB /* AccountsListVM.swift */,
+			);
+			path = "Accounts List";
+			sourceTree = "<group>";
+		};
+		818C780D2A20877C0048FFBB /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				818C780C2A20876B0048FFBB /* Accounts List */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +143,6 @@
 			files = (
 				818C78052A2085220048FFBB /* LaunchScreen.storyboard in Resources */,
 				818C78022A2085220048FFBB /* Assets.xcassets in Resources */,
-				818C78002A2085200048FFBB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +153,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				818C77FD2A2085200048FFBB /* ViewController.swift in Sources */,
+				818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */,
 				818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */,
+				818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +163,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		818C77FE2A2085200048FFBB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				818C77FF2A2085200048FFBB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		818C78032A2085220048FFBB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -291,7 +299,6 @@
 				INFOPLIST_FILE = "advantange-asignment/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -318,7 +325,6 @@
 				INFOPLIST_FILE = "advantange-asignment/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
