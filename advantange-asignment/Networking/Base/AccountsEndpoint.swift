@@ -10,6 +10,7 @@ import Foundation
 enum AccountsEndpoint {
     case accounts
     case accountDetails(accountId: String)
+    case transactions(accountId: String, page: Int, fromDate: String, toDate: String)
 }
 
 extension AccountsEndpoint: Endpoint {
@@ -23,6 +24,8 @@ extension AccountsEndpoint: Endpoint {
             return "/accounts"
         case .accountDetails(let accountId):
             return "/account/details/\(accountId)"
+        case .transactions(let accountId, _, _, _):
+            return "/account/transactions/\(accountId)"
         }
     }
 
@@ -30,10 +33,23 @@ extension AccountsEndpoint: Endpoint {
         switch self {
         case .accounts, .accountDetails:
             return .get
+        case .transactions:
+            return .post
         }
     }
 
     var queryItems: [URLQueryItem]? {
         return nil
+    }
+
+    var body: [String : Any]? {
+        switch self {
+        case .accounts, .accountDetails:
+            return nil
+        case .transactions(_, let page, let fromDate, let toDate):
+            return ["next_page": page,
+                    "from_date": fromDate,
+                    "to_date": toDate]
+        }
     }
 }

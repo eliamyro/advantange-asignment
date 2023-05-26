@@ -39,5 +39,6 @@ class DInjection: DependencyContainer {
     private func registerUseCases() {
         register(FetchAccountsUC.self) { FetchAccountsUCImp() }
         register(FetchAccountDetailsUC.self) { FetchAccountDetailsUCImp() }
+        register(FetchTransactionsUC.self) { FetchTransactionUCImp() }
     }
 }

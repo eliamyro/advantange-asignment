@@ -30,7 +30,9 @@ class HTTPClientImp: HTTPClient {
         var request = URLRequest(url: url)
         request.httpMethod = endpoint.method.rawValue
         request.allHTTPHeaderFields = endpoint.header
-
+        if let body = endpoint.body {
+            request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: [])
+        }
 
         return URLSession.shared.dataTaskPublisher(for: request)
             .assumeHTTP()

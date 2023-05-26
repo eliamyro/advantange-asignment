@@ -28,7 +28,8 @@ class AccountDetailsViewController: UIViewController {
         super.viewDidLoad()
         bind()
         setupUI()
-        viewModel.fetchAccountDetails()
+//        viewModel.fetchAccountDetails()
+        viewModel.fetchTransactions()
     }
 
     // MARK: - Private Methods
