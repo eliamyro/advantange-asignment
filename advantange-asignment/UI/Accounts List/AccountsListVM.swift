@@ -8,5 +8,11 @@
 import Foundation
 
 class AccountsListVM {
-    
+    var accounts: [APIAccount] = []
+
+    func createDummyAccounts() {
+        for _ in 0 ... 5 {
+            accounts.append(APIAccount.fakeAccount)
+        }
+    }
 }

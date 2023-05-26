@@ -14,6 +14,8 @@
 		818C78052A2085220048FFBB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 818C78032A2085220048FFBB /* LaunchScreen.storyboard */; };
 		818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C780E2A2087A70048FFBB /* AccountsListVM.swift */; };
 		818C78132A208A230048FFBB /* APIAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78122A208A230048FFBB /* APIAccount.swift */; };
+		818C78162A20925E0048FFBB /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78152A20925E0048FFBB /* AccountCell.swift */; };
+		818C78192A20A17A0048FFBB /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		818C78062A2085220048FFBB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		818C780E2A2087A70048FFBB /* AccountsListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsListVM.swift; sourceTree = "<group>"; };
 		818C78122A208A230048FFBB /* APIAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAccount.swift; sourceTree = "<group>"; };
+		818C78152A20925E0048FFBB /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
+		818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,7 @@
 		818C77F72A2085200048FFBB /* advantange-asignment */ = {
 			isa = PBXGroup;
 			children = (
+				818C78172A20A1640048FFBB /* Extensions */,
 				818C78102A2089FA0048FFBB /* Networking */,
 				818C780D2A20877C0048FFBB /* UI */,
 				818C77F82A2085200048FFBB /* AppDelegate.swift */,
@@ -81,6 +86,7 @@
 		818C780D2A20877C0048FFBB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				818C78142A20923C0048FFBB /* Cells */,
 				818C780C2A20876B0048FFBB /* Accounts List */,
 			);
 			path = UI;
@@ -100,6 +106,22 @@
 				818C78122A208A230048FFBB /* APIAccount.swift */,
 			);
 			path = Codables;
+			sourceTree = "<group>";
+		};
+		818C78142A20923C0048FFBB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				818C78152A20925E0048FFBB /* AccountCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		818C78172A20A1640048FFBB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,7 +198,9 @@
 				818C78132A208A230048FFBB /* APIAccount.swift in Sources */,
 				818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */,
 				818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */,
+				818C78192A20A17A0048FFBB /* UITableViewCell+Ext.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
+				818C78162A20925E0048FFBB /* AccountCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
