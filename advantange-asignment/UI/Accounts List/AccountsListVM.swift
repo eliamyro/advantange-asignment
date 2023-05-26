@@ -9,7 +9,7 @@ import Combine
 import Foundation
 
 class AccountsListVM {
-    private let fetchAccountsUC = FetchAccountsUCImp()
+    @Injected var fetchAccountsUC: FetchAccountsUC
 
     @Published var accounts: [APIAccount] = []
     var cancellables = Set<AnyCancellable>()

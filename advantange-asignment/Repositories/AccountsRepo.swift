@@ -1,5 +1,5 @@
 //
-//  AccountRepo.swift
+//  AccountsRepo.swift
 //  advantange-asignment
 //
 //  Created by Elias Myronidis on 26/5/23.
@@ -13,7 +13,7 @@ protocol AccountsRepo {
 }
 
 class AccountsRepoImp: AccountsRepo {
-    let client = HTTPClientImp()
+    @Injected var client: HTTPClient
 
     func fetchAccounts() -> AnyPublisher<[APIAccount], RequestError> {
         client.sendRequest(endpoint: AccountsEndpoint.accounts, responseType: [APIAccount].self)

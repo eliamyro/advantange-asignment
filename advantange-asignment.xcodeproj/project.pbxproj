@@ -22,8 +22,11 @@
 		818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78222A20AACD0048FFBB /* HTTPClient.swift */; };
 		818C78252A20ABE80048FFBB /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78242A20ABE80048FFBB /* RequestError.swift */; };
 		818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78272A20AC500048FFBB /* FetchAccountsUC.swift */; };
-		818C782B2A20AC740048FFBB /* AccountRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782A2A20AC740048FFBB /* AccountRepo.swift */; };
+		818C782B2A20AC740048FFBB /* AccountsRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782A2A20AC740048FFBB /* AccountsRepo.swift */; };
 		818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */; };
+		818C78302A20B91A0048FFBB /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782F2A20B91A0048FFBB /* DependencyContainer.swift */; };
+		818C78322A20B9870048FFBB /* DInjection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78312A20B9870048FFBB /* DInjection.swift */; };
+		818C78342A20BA150048FFBB /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78332A20BA150048FFBB /* Injected.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,8 +47,11 @@
 		818C78222A20AACD0048FFBB /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		818C78242A20ABE80048FFBB /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
 		818C78272A20AC500048FFBB /* FetchAccountsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAccountsUC.swift; sourceTree = "<group>"; };
-		818C782A2A20AC740048FFBB /* AccountRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepo.swift; sourceTree = "<group>"; };
+		818C782A2A20AC740048FFBB /* AccountsRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsRepo.swift; sourceTree = "<group>"; };
 		818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Networking.swift"; sourceTree = "<group>"; };
+		818C782F2A20B91A0048FFBB /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		818C78312A20B9870048FFBB /* DInjection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DInjection.swift; sourceTree = "<group>"; };
+		818C78332A20BA150048FFBB /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 		818C77F72A2085200048FFBB /* advantange-asignment */ = {
 			isa = PBXGroup;
 			children = (
+				818C782E2A20B8EE0048FFBB /* DependencyInjection */,
 				818C78292A20AC670048FFBB /* Repositories */,
 				818C78172A20A1640048FFBB /* Extensions */,
 				818C78102A2089FA0048FFBB /* Networking */,
@@ -175,9 +182,19 @@
 		818C78292A20AC670048FFBB /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				818C782A2A20AC740048FFBB /* AccountRepo.swift */,
+				818C782A2A20AC740048FFBB /* AccountsRepo.swift */,
 			);
 			path = Repositories;
+			sourceTree = "<group>";
+		};
+		818C782E2A20B8EE0048FFBB /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				818C782F2A20B91A0048FFBB /* DependencyContainer.swift */,
+				818C78312A20B9870048FFBB /* DInjection.swift */,
+				818C78332A20BA150048FFBB /* Injected.swift */,
+			);
+			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -250,15 +267,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				818C78322A20B9870048FFBB /* DInjection.swift in Sources */,
 				818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */,
 				818C78132A208A230048FFBB /* APIAccount.swift in Sources */,
 				818C781C2A20A8010048FFBB /* Endpoint.swift in Sources */,
 				818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */,
 				818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */,
 				818C78192A20A17A0048FFBB /* UITableViewCell+Ext.swift in Sources */,
+				818C78302A20B91A0048FFBB /* DependencyContainer.swift in Sources */,
 				818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */,
 				818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */,
-				818C782B2A20AC740048FFBB /* AccountRepo.swift in Sources */,
+				818C782B2A20AC740048FFBB /* AccountsRepo.swift in Sources */,
+				818C78342A20BA150048FFBB /* Injected.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
 				818C78252A20ABE80048FFBB /* RequestError.swift in Sources */,
 				818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */,

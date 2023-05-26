@@ -13,7 +13,7 @@ protocol FetchAccountsUC {
 }
 
 class FetchAccountsUCImp: FetchAccountsUC {
-    let repo = AccountsRepoImp()
+    @Injected var repo: AccountsRepo
 
     func execute() -> AnyPublisher<[APIAccount], RequestError> {
         repo.fetchAccounts()
