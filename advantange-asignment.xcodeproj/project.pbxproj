@@ -16,6 +16,14 @@
 		818C78132A208A230048FFBB /* APIAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78122A208A230048FFBB /* APIAccount.swift */; };
 		818C78162A20925E0048FFBB /* AccountCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78152A20925E0048FFBB /* AccountCell.swift */; };
 		818C78192A20A17A0048FFBB /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */; };
+		818C781C2A20A8010048FFBB /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C781B2A20A8010048FFBB /* Endpoint.swift */; };
+		818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C781D2A20A8380048FFBB /* RequestMethod.swift */; };
+		818C78202A20A86D0048FFBB /* AccountsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C781F2A20A86D0048FFBB /* AccountsEndpoint.swift */; };
+		818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78222A20AACD0048FFBB /* HTTPClient.swift */; };
+		818C78252A20ABE80048FFBB /* RequestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78242A20ABE80048FFBB /* RequestError.swift */; };
+		818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C78272A20AC500048FFBB /* FetchAccountsUC.swift */; };
+		818C782B2A20AC740048FFBB /* AccountRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782A2A20AC740048FFBB /* AccountRepo.swift */; };
+		818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +38,14 @@
 		818C78122A208A230048FFBB /* APIAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIAccount.swift; sourceTree = "<group>"; };
 		818C78152A20925E0048FFBB /* AccountCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCell.swift; sourceTree = "<group>"; };
 		818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
+		818C781B2A20A8010048FFBB /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		818C781D2A20A8380048FFBB /* RequestMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestMethod.swift; sourceTree = "<group>"; };
+		818C781F2A20A86D0048FFBB /* AccountsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsEndpoint.swift; sourceTree = "<group>"; };
+		818C78222A20AACD0048FFBB /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		818C78242A20ABE80048FFBB /* RequestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestError.swift; sourceTree = "<group>"; };
+		818C78272A20AC500048FFBB /* FetchAccountsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAccountsUC.swift; sourceTree = "<group>"; };
+		818C782A2A20AC740048FFBB /* AccountRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRepo.swift; sourceTree = "<group>"; };
+		818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Networking.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +78,10 @@
 		818C77F72A2085200048FFBB /* advantange-asignment */ = {
 			isa = PBXGroup;
 			children = (
+				818C78292A20AC670048FFBB /* Repositories */,
 				818C78172A20A1640048FFBB /* Extensions */,
 				818C78102A2089FA0048FFBB /* Networking */,
+				818C78262A20AC390048FFBB /* UseCases */,
 				818C780D2A20877C0048FFBB /* UI */,
 				818C77F82A2085200048FFBB /* AppDelegate.swift */,
 				818C77FA2A2085200048FFBB /* SceneDelegate.swift */,
@@ -95,6 +113,8 @@
 		818C78102A2089FA0048FFBB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				818C78212A20AABC0048FFBB /* Clent */,
+				818C781A2A20A7F50048FFBB /* Base */,
 				818C78112A208A010048FFBB /* Codables */,
 			);
 			path = Networking;
@@ -120,8 +140,44 @@
 			isa = PBXGroup;
 			children = (
 				818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */,
+				818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		818C781A2A20A7F50048FFBB /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				818C781B2A20A8010048FFBB /* Endpoint.swift */,
+				818C781D2A20A8380048FFBB /* RequestMethod.swift */,
+				818C781F2A20A86D0048FFBB /* AccountsEndpoint.swift */,
+				818C78242A20ABE80048FFBB /* RequestError.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		818C78212A20AABC0048FFBB /* Clent */ = {
+			isa = PBXGroup;
+			children = (
+				818C78222A20AACD0048FFBB /* HTTPClient.swift */,
+			);
+			path = Clent;
+			sourceTree = "<group>";
+		};
+		818C78262A20AC390048FFBB /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				818C78272A20AC500048FFBB /* FetchAccountsUC.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		818C78292A20AC670048FFBB /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				818C782A2A20AC740048FFBB /* AccountRepo.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,10 +252,18 @@
 			files = (
 				818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */,
 				818C78132A208A230048FFBB /* APIAccount.swift in Sources */,
+				818C781C2A20A8010048FFBB /* Endpoint.swift in Sources */,
 				818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */,
 				818C780F2A2087A70048FFBB /* AccountsListVM.swift in Sources */,
 				818C78192A20A17A0048FFBB /* UITableViewCell+Ext.swift in Sources */,
+				818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */,
+				818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */,
+				818C782B2A20AC740048FFBB /* AccountRepo.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
+				818C78252A20ABE80048FFBB /* RequestError.swift in Sources */,
+				818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */,
+				818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */,
+				818C78202A20A86D0048FFBB /* AccountsEndpoint.swift in Sources */,
 				818C78162A20925E0048FFBB /* AccountCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

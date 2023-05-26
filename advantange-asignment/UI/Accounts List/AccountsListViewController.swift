@@ -40,10 +40,12 @@ class AccountsListViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        bind()
         setupUI()
         configureViews()
-        viewModel.createDummyAccounts()
         registerCells()
+
+        viewModel.fetchAccounts()
     }
 
     // MARK: - Private Methods
@@ -56,6 +58,15 @@ class AccountsListViewController: UIViewController {
 
     private func registerCells() {
         accountsTableView.register(AccountCell.self, forCellReuseIdentifier: AccountCell.id)
+    }
+
+    private func bind() {
+        viewModel.$accounts
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+            self.accountsTableView.reloadData()
+        }
+        .store(in: &viewModel.cancellables)
     }
 }
 

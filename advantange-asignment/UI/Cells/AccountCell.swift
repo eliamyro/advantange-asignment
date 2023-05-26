@@ -55,7 +55,7 @@ class AccountCell: UITableViewCell {
 
     func setup(with account: APIAccount) {
         titleLabel.text = account.accountNickname ?? "\(account.accountNumber ?? 0)"
-        balanceLabel.text = "\(account.balance ?? 0.0) \(account.currencyCode ?? "")"
+        balanceLabel.text = "\(account.balance ?? "-") \(account.currencyCode ?? "")"
     }
 }
 
