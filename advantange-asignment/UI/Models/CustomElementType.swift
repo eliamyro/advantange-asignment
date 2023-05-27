@@ -17,4 +17,6 @@ protocol CustomElementCell: AnyObject {
 
 enum CustomElementType: String {
     case account
+    case details
+    case transaction
 }

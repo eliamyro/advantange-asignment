@@ -8,43 +8,59 @@
 import Combine
 import Foundation
 
+struct SectionElement {
+    var title: String
+    var element: CustomElementModel
+}
+
 class AccountDetailsVM {
     @Injected var fetchAccountDetailsUC: FetchAccountDetailsUC
     @Injected var fetchTransactionsUC: FetchTransactionsUC
 
     var account: AccountModel
     @Published var accountDetails: APIAccountDetails?
+    @Published var elements: [CustomElementModel] = []
+    @Published var sections = [SectionElement]()
     var cancellables = Set<AnyCancellable>()
 
     init(account: AccountModel) {
         self.account = account
     }
 
-    func fetchAccountDetails() {
-        guard let accountId = account.id else { return }
-        fetchAccountDetailsUC.execute(accountId: accountId)
+    func fetchData() {
+        self.elements.append(self.account)
+        
+        Publishers.CombineLatest(fetchAccountDetails(), fetchTransactions())
             .receive(on: DispatchQueue.main)
-            .sink { completion in
-                guard case .failure(let error) = completion else { return }
-                print(error.description)
-            } receiveValue: { [weak self] accountDetails in
+            .sink { [weak self] details, transaction in
                 guard let self = self else { return }
-                self.accountDetails = accountDetails
+                if let details = details {
+                    details.accountType = self.account.accountType
+                    self.elements.append(details)
+                }
+
+                if let transactions = transaction?.transactions {
+                    self.elements.append(contentsOf: transactions)
+                }
             }
             .store(in: &cancellables)
     }
 
-    func fetchTransactions() {
-        guard let accountId = account.id else { return }
-        fetchTransactionsUC.execute(accountId: accountId, page: 0, fromDate: "2018-05-16T13:15:30+03:00", toDate: "2018-05-16T13:15:30+03:00")
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                guard case .failure(let error) = completion else { return }
-                print(error.description)
-            } receiveValue: { transactionsResponse in
-//                guard let self = self else { return }
-                print("Fetch transactions: \(transactionsResponse.paging?.pagesCount ?? 0)")
+    func fetchAccountDetails() -> AnyPublisher<AccountDetailsModel?, Never> {
+        return fetchAccountDetailsUC.execute(accountId: account.id ?? "")
+            .catch { error -> Just<AccountDetailsModel?> in
+                print(error)
+                return Just(nil)
             }
-            .store(in: &cancellables)
+            .eraseToAnyPublisher()
+    }
+
+    func fetchTransactions() -> AnyPublisher<APITransactionsResponse?, Never> {
+        return fetchTransactionsUC.execute(accountId: account.id ?? "", page: 0, fromDate: nil, toDate: nil)
+            .catch { error -> Just<APITransactionsResponse?> in
+                print(error)
+                return Just(nil)
+            }
+            .eraseToAnyPublisher()
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Elias Myronidis on 26/5/23.
 //
 
+import Combine
 import UIKit
 
 class AccountDetailsViewController: UIViewController {
@@ -12,6 +13,18 @@ class AccountDetailsViewController: UIViewController {
     // MARK: - Properties
 
     let viewModel: AccountDetailsVM
+
+    // MARK: - Views
+
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.separatorStyle = .none
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+
+        return tableView
+    }()
 
     // MARK: - Lifecycle
 
@@ -28,8 +41,10 @@ class AccountDetailsViewController: UIViewController {
         super.viewDidLoad()
         bind()
         setupUI()
-//        viewModel.fetchAccountDetails()
-        viewModel.fetchTransactions()
+        configureViews()
+        registerCells()
+
+        viewModel.fetchData()
     }
 
     // MARK: - Private Methods
@@ -40,11 +55,52 @@ class AccountDetailsViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.$accountDetails
+        viewModel.$elements
             .receive(on: DispatchQueue.main)
-            .sink { accountDetails in
-                print("AccountDetails: \(accountDetails?.productName ?? "")")
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                self.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
+    }
+
+    private func registerCells() {
+        tableView.register(AccountCell.self, forCellReuseIdentifier: CustomElementType.account.rawValue)
+        tableView.register(AccountDetailsCell.self, forCellReuseIdentifier: CustomElementType.details.rawValue)
+        tableView.register(TransactionCellTableViewCell.self, forCellReuseIdentifier: CustomElementType.transaction.rawValue)
+    }
+}
+
+// NARK: - UITableViewDataSource, UITableViewDelegate
+extension AccountDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.elements.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellModel = viewModel.elements[indexPath.row]
+        let cellIdentifier = cellModel.type.rawValue
+
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomElementCell else { return UITableViewCell() }
+        cell.configure(with: cellModel)
+
+        return cell as! UITableViewCell
+    }
+}
+
+extension AccountDetailsViewController {
+    func configureViews() {
+        configureTableView()
+    }
+
+    private func configureTableView() {
+        view.addSubview(tableView)
+
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
     }
 }

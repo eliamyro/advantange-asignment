@@ -34,6 +34,9 @@
 		818C783B2A20DB780048FFBB /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */; };
 		818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */; };
 		818C783F2A20E5310048FFBB /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783E2A20E5310048FFBB /* Authorization.swift */; };
+		81DCD4692A21F4E7000D6542 /* AccountDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD4682A21F4E7000D6542 /* AccountDetailsModel.swift */; };
+		81DCD46B2A21F571000D6542 /* AccountDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD46A2A21F571000D6542 /* AccountDetailsCell.swift */; };
+		81DCD46F2A220C7A000D6542 /* TransactionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */; };
 		81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FEAB952A21153100DBE544 /* APITransactionsResponse.swift */; };
 		81FEAB982A21173300DBE544 /* FetchTransactionsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,9 @@
 		818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsVM.swift; sourceTree = "<group>"; };
 		818C783E2A20E5310048FFBB /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
+		81DCD4682A21F4E7000D6542 /* AccountDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsModel.swift; sourceTree = "<group>"; };
+		81DCD46A2A21F571000D6542 /* AccountDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCell.swift; sourceTree = "<group>"; };
+		81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellTableViewCell.swift; sourceTree = "<group>"; };
 		81FEAB952A21153100DBE544 /* APITransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITransactionsResponse.swift; sourceTree = "<group>"; };
 		81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTransactionsUC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,6 +94,7 @@
 			children = (
 				810095A02A21E13C00ACC526 /* CustomElementType.swift */,
 				810095A42A21EA2400ACC526 /* AccountModel.swift */,
+				81DCD4682A21F4E7000D6542 /* AccountDetailsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				818C78152A20925E0048FFBB /* AccountCell.swift */,
+				81DCD46A2A21F571000D6542 /* AccountDetailsCell.swift */,
+				81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -310,6 +319,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				81DCD46F2A220C7A000D6542 /* TransactionCellTableViewCell.swift in Sources */,
 				818C78322A20B9870048FFBB /* DInjection.swift in Sources */,
 				818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */,
 				818C78132A208A230048FFBB /* APIAccount.swift in Sources */,
@@ -324,8 +334,10 @@
 				818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */,
 				818C782B2A20AC740048FFBB /* AccountsRepo.swift in Sources */,
 				818C78382A20DAE20048FFBB /* FetchAccountDetailsUC.swift in Sources */,
+				81DCD46B2A21F571000D6542 /* AccountDetailsCell.swift in Sources */,
 				818C78362A20D9410048FFBB /* APIAccountDetails.swift in Sources */,
 				818C78342A20BA150048FFBB /* Injected.swift in Sources */,
+				81DCD4692A21F4E7000D6542 /* AccountDetailsModel.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
 				818C78252A20ABE80048FFBB /* RequestError.swift in Sources */,
 				818C783F2A20E5310048FFBB /* Authorization.swift in Sources */,

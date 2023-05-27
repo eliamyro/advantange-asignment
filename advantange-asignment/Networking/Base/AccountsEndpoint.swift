@@ -10,7 +10,7 @@ import Foundation
 enum AccountsEndpoint {
     case accounts
     case accountDetails(accountId: String)
-    case transactions(accountId: String, page: Int, fromDate: String, toDate: String)
+    case transactions(accountId: String, page: Int, fromDate: String?, toDate: String?)
 }
 
 extension AccountsEndpoint: Endpoint {
@@ -47,9 +47,15 @@ extension AccountsEndpoint: Endpoint {
         case .accounts, .accountDetails:
             return nil
         case .transactions(_, let page, let fromDate, let toDate):
-            return ["next_page": page,
-                    "from_date": fromDate,
-                    "to_date": toDate]
+            var dic = [String: Any]()
+            dic["next_page"] = page
+            if let fromDate = fromDate, let toDate = toDate {
+                dic["from_date"] = fromDate
+                dic["to_date"] = toDate
+            }
+
+            print(dic)
+            return dic
         }
     }
 }

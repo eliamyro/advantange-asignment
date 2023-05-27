@@ -14,7 +14,10 @@ struct APITransactionsResponse: Codable {
 }
 
 // MARK: - APITransaction
-struct APITransaction: Codable {
+class APITransaction: Codable, CustomElementModel {
+    var type: CustomElementType { .transaction }
+
+
     var id: String?
     var date: String?
     var transactionAmount: String?
