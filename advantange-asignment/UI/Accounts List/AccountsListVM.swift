@@ -11,7 +11,7 @@ import Foundation
 class AccountsListVM {
     @Injected var fetchAccountsUC: FetchAccountsUC
 
-    @Published var accounts: [APIAccount] = []
+    @Published var accounts: [AccountModel] = []
     var cancellables = Set<AnyCancellable>()
 
     func fetchAccounts() {

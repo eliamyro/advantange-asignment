@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		810095A12A21E13C00ACC526 /* CustomElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810095A02A21E13C00ACC526 /* CustomElementType.swift */; };
+		810095A52A21EA2400ACC526 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810095A42A21EA2400ACC526 /* AccountModel.swift */; };
 		818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77F82A2085200048FFBB /* AppDelegate.swift */; };
 		818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FA2A2085200048FFBB /* SceneDelegate.swift */; };
 		818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FC2A2085200048FFBB /* AccountsListViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		810095A02A21E13C00ACC526 /* CustomElementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElementType.swift; sourceTree = "<group>"; };
+		810095A42A21EA2400ACC526 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		818C77F52A2085200048FFBB /* advantange-asignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advantange-asignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		818C77F82A2085200048FFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		818C77FA2A2085200048FFBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -79,6 +83,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8100959F2A21E0F500ACC526 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				810095A02A21E13C00ACC526 /* CustomElementType.swift */,
+				810095A42A21EA2400ACC526 /* AccountModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		818C77EC2A2085200048FFBB = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +138,7 @@
 		818C780D2A20877C0048FFBB /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8100959F2A21E0F500ACC526 /* Models */,
 				818C78142A20923C0048FFBB /* Cells */,
 				818C78392A20DB5B0048FFBB /* Account Details */,
 				818C780C2A20876B0048FFBB /* Accounts List */,
@@ -315,12 +329,14 @@
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
 				818C78252A20ABE80048FFBB /* RequestError.swift in Sources */,
 				818C783F2A20E5310048FFBB /* Authorization.swift in Sources */,
+				810095A52A21EA2400ACC526 /* AccountModel.swift in Sources */,
 				81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */,
 				818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */,
 				818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */,
 				818C78202A20A86D0048FFBB /* AccountsEndpoint.swift in Sources */,
 				818C78162A20925E0048FFBB /* AccountCell.swift in Sources */,
 				818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */,
+				810095A12A21E13C00ACC526 /* CustomElementType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

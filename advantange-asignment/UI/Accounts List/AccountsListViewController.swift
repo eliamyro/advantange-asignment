@@ -66,7 +66,7 @@ class AccountsListViewController: UIViewController {
     }
 
     private func registerCells() {
-        accountsTableView.register(AccountCell.self, forCellReuseIdentifier: AccountCell.id)
+        accountsTableView.register(AccountCell.self, forCellReuseIdentifier: CustomElementType.account.rawValue)
     }
 
     private func bind() {
@@ -78,7 +78,7 @@ class AccountsListViewController: UIViewController {
         .store(in: &viewModel.cancellables)
     }
 
-    func navigateToDetails(with account: APIAccount) {
+    func navigateToDetails(with account: AccountModel) {
         let viewModel = AccountDetailsVM(account: account)
         let accountDetailsController = AccountDetailsViewController(viewModel: viewModel)
         navigationController?.show(accountDetailsController, sender: nil)
@@ -114,13 +114,15 @@ extension AccountsListViewController: UITableViewDataSource, UITableViewDelegate
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: AccountCell.id, for: indexPath)
-                as? AccountCell else { return UITableViewCell() }
+        let cellModel = viewModel.accounts[indexPath.row]
+        let cellIdentifier = cellModel.type.rawValue
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
+                as? CustomElementCell else { return UITableViewCell() }
 
         let account = viewModel.accounts[indexPath.row]
-        cell.setup(with: account)
+        cell.configure(with: account)
 
-        return cell
+        return cell as! UITableViewCell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

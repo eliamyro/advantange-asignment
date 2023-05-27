@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AccountCell: UITableViewCell {
+class AccountCell: UITableViewCell, CustomElementCell {
 
     // MARK: Views
 
@@ -53,9 +53,19 @@ class AccountCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    func setup(with account: APIAccount) {
-        titleLabel.text = account.accountNickname ?? "\(account.accountNumber ?? 0)"
-        balanceLabel.text = "\(account.balance ?? "-") \(account.currencyCode ?? "")"
+    func configure(with elementModel: CustomElementModel) {
+        guard let model = elementModel as? AccountModel else {
+            print("Unable to cast model as AccountModel")
+            return
+        }
+
+        configureViews()
+        setup(model: model)
+    }
+
+    func setup(model: AccountModel) {
+        titleLabel.text = model.accountNickname ?? "\(model.accountNumber ?? 0)"
+        balanceLabel.text = "\(model.balance ?? "-") \(model.currencyCode ?? "")"
     }
 }
 

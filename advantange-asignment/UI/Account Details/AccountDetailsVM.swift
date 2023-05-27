@@ -12,11 +12,11 @@ class AccountDetailsVM {
     @Injected var fetchAccountDetailsUC: FetchAccountDetailsUC
     @Injected var fetchTransactionsUC: FetchTransactionsUC
 
-    var account: APIAccount
+    var account: AccountModel
     @Published var accountDetails: APIAccountDetails?
     var cancellables = Set<AnyCancellable>()
 
-    init(account: APIAccount) {
+    init(account: AccountModel) {
         self.account = account
     }
 
