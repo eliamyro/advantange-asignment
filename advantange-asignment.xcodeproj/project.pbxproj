@@ -34,6 +34,8 @@
 		818C783B2A20DB780048FFBB /* AccountDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */; };
 		818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */; };
 		818C783F2A20E5310048FFBB /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C783E2A20E5310048FFBB /* Authorization.swift */; };
+		818F232A2A239A7E00C68A37 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818F23292A239A7E00C68A37 /* String+Ext.swift */; };
+		819E76C72A2240C200626536 /* TransactionsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 819E76C62A2240C200626536 /* TransactionsResponseModel.swift */; };
 		81DCD4692A21F4E7000D6542 /* AccountDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD4682A21F4E7000D6542 /* AccountDetailsModel.swift */; };
 		81DCD46B2A21F571000D6542 /* AccountDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD46A2A21F571000D6542 /* AccountDetailsCell.swift */; };
 		81DCD46F2A220C7A000D6542 /* TransactionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */; };
@@ -71,6 +73,8 @@
 		818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsViewController.swift; sourceTree = "<group>"; };
 		818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsVM.swift; sourceTree = "<group>"; };
 		818C783E2A20E5310048FFBB /* Authorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
+		818F23292A239A7E00C68A37 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		819E76C62A2240C200626536 /* TransactionsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsResponseModel.swift; sourceTree = "<group>"; };
 		81DCD4682A21F4E7000D6542 /* AccountDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsModel.swift; sourceTree = "<group>"; };
 		81DCD46A2A21F571000D6542 /* AccountDetailsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailsCell.swift; sourceTree = "<group>"; };
 		81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +99,7 @@
 				810095A02A21E13C00ACC526 /* CustomElementType.swift */,
 				810095A42A21EA2400ACC526 /* AccountModel.swift */,
 				81DCD4682A21F4E7000D6542 /* AccountDetailsModel.swift */,
+				819E76C62A2240C200626536 /* TransactionsResponseModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -188,6 +193,7 @@
 			children = (
 				818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */,
 				818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */,
+				818F23292A239A7E00C68A37 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -345,9 +351,11 @@
 				81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */,
 				818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */,
 				818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */,
+				819E76C72A2240C200626536 /* TransactionsResponseModel.swift in Sources */,
 				818C78202A20A86D0048FFBB /* AccountsEndpoint.swift in Sources */,
 				818C78162A20925E0048FFBB /* AccountCell.swift in Sources */,
 				818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */,
+				818F232A2A239A7E00C68A37 /* String+Ext.swift in Sources */,
 				810095A12A21E13C00ACC526 /* CustomElementType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

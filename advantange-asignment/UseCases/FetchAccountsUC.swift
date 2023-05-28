@@ -18,9 +18,7 @@ class FetchAccountsUCImp: FetchAccountsUC {
     func execute() -> AnyPublisher<[AccountModel], RequestError> {
         repo.fetchAccounts()
             .map { apiAccounts in
-                apiAccounts.map { apiAccount in
-                    AccountModel(account: apiAccount)
-                }
+                apiAccounts.map { AccountModel(account: $0) }
             }
             .eraseToAnyPublisher()
     }

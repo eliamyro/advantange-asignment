@@ -55,7 +55,7 @@ class AccountDetailsViewController: UIViewController {
     }
 
     private func bind() {
-        viewModel.$elements
+        viewModel.$data
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
                 guard let self = self else { return }
@@ -73,18 +73,33 @@ class AccountDetailsViewController: UIViewController {
 
 // NARK: - UITableViewDataSource, UITableViewDelegate
 extension AccountDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.data.count
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        viewModel.elements.count
+        if section == 0 || section == 1 {
+            return 1
+        } else {
+            return viewModel.data[section].elements.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = viewModel.elements[indexPath.row]
+        let cellModel = viewModel.data[indexPath.section].elements[indexPath.row]
         let cellIdentifier = cellModel.type.rawValue
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomElementCell else { return UITableViewCell() }
         cell.configure(with: cellModel)
 
         return cell as! UITableViewCell
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 || section == 1 {
+            return nil
+        }
+
+        return viewModel.data[section].title
     }
 }
 

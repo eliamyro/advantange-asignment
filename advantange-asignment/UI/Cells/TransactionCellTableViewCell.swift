@@ -64,7 +64,7 @@ class TransactionCellTableViewCell: UITableViewCell, CustomElementCell {
     }
 
     func configure(with elementModel: CustomElementModel) {
-        guard let model = elementModel as? APITransaction else {
+        guard let model = elementModel as? TransactionModel else {
             print("Unable to cast model as APITransaction")
             return
         }
@@ -73,7 +73,7 @@ class TransactionCellTableViewCell: UITableViewCell, CustomElementCell {
         setup(model: model)
     }
 
-    private func setup(model: APITransaction) {
+    private func setup(model: TransactionModel) {
         transactionTypeLabel.text = model.transactionType
         transactionAmountLabel.text = model.transactionAmount
         transactionDescriptionLabel.text = model.transactionDescription ?? "There is no description"

@@ -8,9 +8,9 @@
 import Combine
 import Foundation
 
-struct SectionElement {
-    var title: String
-    var element: CustomElementModel
+struct Section {
+    var title: String?
+    var elements: [CustomElementModel]
 }
 
 class AccountDetailsVM {
@@ -18,9 +18,8 @@ class AccountDetailsVM {
     @Injected var fetchTransactionsUC: FetchTransactionsUC
 
     var account: AccountModel
-    @Published var accountDetails: APIAccountDetails?
-    @Published var elements: [CustomElementModel] = []
-    @Published var sections = [SectionElement]()
+    @Published var data = [Section]()
+
     var cancellables = Set<AnyCancellable>()
 
     init(account: AccountModel) {
@@ -28,22 +27,34 @@ class AccountDetailsVM {
     }
 
     func fetchData() {
-        self.elements.append(self.account)
+        self.data.append(Section(elements: [self.account]))
         
         Publishers.CombineLatest(fetchAccountDetails(), fetchTransactions())
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] details, transaction in
+            .sink { [weak self] details, transactions in
                 guard let self = self else { return }
                 if let details = details {
                     details.accountType = self.account.accountType
-                    self.elements.append(details)
+                    self.data.append(Section(elements: [details]))
                 }
 
-                if let transactions = transaction?.transactions {
-                    self.elements.append(contentsOf: transactions)
-                }
+                self.appendTransactions(transactions: transactions)
             }
             .store(in: &cancellables)
+    }
+
+    func appendTransactions(transactions: TransactionsResponseModel?) {
+        if let transactions = transactions?.transactions {
+            _ = transactions.sorted { $0.date ?? "" > $1.date ?? "" }
+            transactions.forEach { transaction in
+                if !self.data.contains(where: { $0.title == transaction.date?.toMonthYearFormat() }) {
+                    self.data.append(Section(title: transaction.date?.toMonthYearFormat() ?? "", elements: [transaction]))
+                } else {
+                    guard let index = self.data.firstIndex(where: { $0.title == transaction.date?.toMonthYearFormat() }) else { return }
+                    self.data[index].elements.append(transaction)
+                }
+            }
+        }
     }
 
     func fetchAccountDetails() -> AnyPublisher<AccountDetailsModel?, Never> {
@@ -55,9 +66,9 @@ class AccountDetailsVM {
             .eraseToAnyPublisher()
     }
 
-    func fetchTransactions() -> AnyPublisher<APITransactionsResponse?, Never> {
+    func fetchTransactions() -> AnyPublisher<TransactionsResponseModel?, Never> {
         return fetchTransactionsUC.execute(accountId: account.id ?? "", page: 0, fromDate: nil, toDate: nil)
-            .catch { error -> Just<APITransactionsResponse?> in
+            .catch { error -> Just<TransactionsResponseModel?> in
                 print(error)
                 return Just(nil)
             }

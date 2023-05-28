@@ -17,9 +17,7 @@ class FetchAccountDetailsUCImp: FetchAccountDetailsUC {
 
     func execute(accountId: String) -> AnyPublisher<AccountDetailsModel?, RequestError> {
         repo.fetchAccountDetails(accountId: accountId)
-            .map { accountDetails in
-                AccountDetailsModel(accountDetails: accountDetails)
-            }
+            .map { AccountDetailsModel(accountDetails: $0) }
             .eraseToAnyPublisher()
     }
 }
