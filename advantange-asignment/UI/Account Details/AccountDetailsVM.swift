@@ -16,6 +16,7 @@ struct Section {
 class AccountDetailsVM {
     @Injected var fetchAccountDetailsUC: FetchAccountDetailsUC
     @Injected var fetchTransactionsUC: FetchTransactionsUC
+    var loaderSubject = CurrentValueSubject<Bool, Never>(false)
 
     var account: AccountModel
     @Published var data = [Section]()
@@ -27,12 +28,15 @@ class AccountDetailsVM {
     }
 
     func fetchData() {
+        loaderSubject.send(true)
+
         self.data.append(Section(elements: [self.account]))
         
         Publishers.CombineLatest(fetchAccountDetails(), fetchTransactions())
             .receive(on: DispatchQueue.main)
             .sink { [weak self] details, transactions in
                 guard let self = self else { return }
+                self.loaderSubject.send(false)
                 if let details = details {
                     details.accountType = self.account.accountType
                     self.data.append(Section(elements: [details]))

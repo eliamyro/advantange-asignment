@@ -16,6 +16,15 @@ class AccountDetailsViewController: UIViewController {
 
     // MARK: - Views
 
+    lazy var activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.hidesWhenStopped = true
+        indicator.color = .systemBlue
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+
+        return indicator
+    }()
+
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.dataSource = self
@@ -55,6 +64,16 @@ class AccountDetailsViewController: UIViewController {
     }
 
     private func bind() {
+        viewModel.loaderSubject.sink { [weak self] isLoading in
+            guard let self = self else { return }
+            if isLoading {
+                self.activityIndicator.startAnimating()
+            } else {
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        .store(in: &viewModel.cancellables)
+
         viewModel.$data
             .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
@@ -106,6 +125,7 @@ extension AccountDetailsViewController: UITableViewDataSource, UITableViewDelega
 extension AccountDetailsViewController {
     func configureViews() {
         configureTableView()
+        configureIndicatorView()
     }
 
     private func configureTableView() {
@@ -116,6 +136,17 @@ extension AccountDetailsViewController {
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+    }
+
+    private func configureIndicatorView() {
+        view.addSubview(activityIndicator)
+
+        NSLayoutConstraint.activate([
+            activityIndicator.heightAnchor.constraint(equalToConstant: 100),
+            activityIndicator.widthAnchor.constraint(equalToConstant: 100),
+            activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         ])
     }
 }
