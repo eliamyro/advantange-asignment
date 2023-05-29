@@ -91,6 +91,7 @@ class AccountDetailsViewController: UIViewController {
 }
 
 // NARK: - UITableViewDataSource, UITableViewDelegate
+
 extension AccountDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return viewModel.data.count
@@ -120,7 +121,19 @@ extension AccountDetailsViewController: UITableViewDataSource, UITableViewDelega
 
         return viewModel.data[section].title
     }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height
+        let height = scrollView.frame.height
+
+        if offsetY > (contentHeight - height) {
+            viewModel.fetchNextPageTransactions()
+        }
+    }
 }
+
+// MARK: - Setup Constraints
 
 extension AccountDetailsViewController {
     func configureViews() {

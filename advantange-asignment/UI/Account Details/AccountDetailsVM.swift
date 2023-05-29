@@ -16,12 +16,14 @@ struct Section {
 class AccountDetailsVM {
     @Injected var fetchAccountDetailsUC: FetchAccountDetailsUC
     @Injected var fetchTransactionsUC: FetchTransactionsUC
+
     var loaderSubject = CurrentValueSubject<Bool, Never>(false)
+    @Published var data = [Section]()
+    var cancellables = Set<AnyCancellable>()
 
     var account: AccountModel
-    @Published var data = [Section]()
-
-    var cancellables = Set<AnyCancellable>()
+    var page = 0
+    var pagesCount = 0
 
     init(account: AccountModel) {
         self.account = account
@@ -34,7 +36,7 @@ class AccountDetailsVM {
         
         Publishers.CombineLatest(fetchAccountDetails(), fetchTransactions())
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] details, transactions in
+            .sink { [weak self] details, transactionsResponse in
                 guard let self = self else { return }
                 self.loaderSubject.send(false)
                 if let details = details {
@@ -42,13 +44,20 @@ class AccountDetailsVM {
                     self.data.append(Section(elements: [details]))
                 }
 
-                self.appendTransactions(transactions: transactions)
+                if let response = transactionsResponse {
+                    self.appendTransactions(transactionsResponse: response)
+                }
             }
             .store(in: &cancellables)
     }
 
-    func appendTransactions(transactions: TransactionsResponseModel?) {
-        if let transactions = transactions?.transactions {
+    func appendTransactions(transactionsResponse: TransactionsResponseModel) {
+        if let pagesCount = transactionsResponse.pagesCount {
+            self.pagesCount = pagesCount
+            self.page += 1
+        }
+
+        if let transactions = transactionsResponse.transactions {
             _ = transactions.sorted { $0.date ?? "" > $1.date ?? "" }
             transactions.forEach { transaction in
                 if !self.data.contains(where: { $0.title == transaction.date?.toMonthYearFormat() }) {
@@ -71,11 +80,27 @@ class AccountDetailsVM {
     }
 
     func fetchTransactions() -> AnyPublisher<TransactionsResponseModel?, Never> {
-        return fetchTransactionsUC.execute(accountId: account.id ?? "", page: 0, fromDate: nil, toDate: nil)
+        return fetchTransactionsUC.execute(accountId: account.id ?? "", page: page, fromDate: nil, toDate: nil)
             .catch { error -> Just<TransactionsResponseModel?> in
                 print(error)
                 return Just(nil)
             }
             .eraseToAnyPublisher()
+    }
+
+    func fetchNextPageTransactions() {
+        guard page < pagesCount - 1  else { return }
+        loaderSubject.send(true)
+
+        fetchTransactions()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] transactionsResponse in
+                guard let self = self else { return }
+                self.loaderSubject.send(false)
+                if let response = transactionsResponse {
+                    self.appendTransactions(transactionsResponse: response)
+                }
+            }
+            .store(in: &cancellables)
     }
 }
