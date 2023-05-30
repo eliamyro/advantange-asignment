@@ -41,6 +41,8 @@
 		81DCD46F2A220C7A000D6542 /* TransactionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */; };
 		81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FEAB952A21153100DBE544 /* APITransactionsResponse.swift */; };
 		81FEAB982A21173300DBE544 /* FetchTransactionsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */; };
+		93E423752A2626EE007C3ACE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E423742A2626EE007C3ACE /* CoreDataManager.swift */; };
+		93E423782A262771007C3ACE /* AdvantageDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93E423762A262771007C3ACE /* AdvantageDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +82,8 @@
 		81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellTableViewCell.swift; sourceTree = "<group>"; };
 		81FEAB952A21153100DBE544 /* APITransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITransactionsResponse.swift; sourceTree = "<group>"; };
 		81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTransactionsUC.swift; sourceTree = "<group>"; };
+		93E423742A2626EE007C3ACE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		93E423772A262771007C3ACE /* AdvantageDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AdvantageDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 		818C77F72A2085200048FFBB /* advantange-asignment */ = {
 			isa = PBXGroup;
 			children = (
+				93E423732A2626DC007C3ACE /* Core Data */,
 				818C782E2A20B8EE0048FFBB /* DependencyInjection */,
 				818C78292A20AC670048FFBB /* Repositories */,
 				818C78172A20A1640048FFBB /* Extensions */,
@@ -134,6 +139,7 @@
 				818C78012A2085220048FFBB /* Assets.xcassets */,
 				818C78032A2085220048FFBB /* LaunchScreen.storyboard */,
 				818C78062A2085220048FFBB /* Info.plist */,
+				93E423762A262771007C3ACE /* AdvantageDataModel.xcdatamodeld */,
 			);
 			path = "advantange-asignment";
 			sourceTree = "<group>";
@@ -255,6 +261,14 @@
 			path = "Account Details";
 			sourceTree = "<group>";
 		};
+		93E423732A2626DC007C3ACE /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				93E423742A2626EE007C3ACE /* CoreDataManager.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -346,6 +360,7 @@
 				81DCD4692A21F4E7000D6542 /* AccountDetailsModel.swift in Sources */,
 				818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */,
 				818C78252A20ABE80048FFBB /* RequestError.swift in Sources */,
+				93E423752A2626EE007C3ACE /* CoreDataManager.swift in Sources */,
 				818C783F2A20E5310048FFBB /* Authorization.swift in Sources */,
 				810095A52A21EA2400ACC526 /* AccountModel.swift in Sources */,
 				81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */,
@@ -357,6 +372,7 @@
 				818C783D2A20DB870048FFBB /* AccountDetailsVM.swift in Sources */,
 				818F232A2A239A7E00C68A37 /* String+Ext.swift in Sources */,
 				810095A12A21E13C00ACC526 /* CustomElementType.swift in Sources */,
+				93E423782A262771007C3ACE /* AdvantageDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,6 +578,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		93E423762A262771007C3ACE /* AdvantageDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				93E423772A262771007C3ACE /* AdvantageDataModel.xcdatamodel */,
+			);
+			currentVersion = 93E423772A262771007C3ACE /* AdvantageDataModel.xcdatamodel */;
+			path = AdvantageDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 818C77ED2A2085200048FFBB /* Project object */;
 }
