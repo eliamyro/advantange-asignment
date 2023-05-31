@@ -26,3 +26,9 @@ class AccountModel: CustomElementModel {
         self.accountNickname = account.accountNickname
     }
 }
+
+extension AccountModel {
+    var isFavorite: Bool {
+        CoreDataManager.shared.isFavorite(id: id ?? "")
+    }
+}

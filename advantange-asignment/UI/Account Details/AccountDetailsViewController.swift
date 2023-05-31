@@ -81,6 +81,13 @@ class AccountDetailsViewController: UIViewController {
                 self.tableView.reloadData()
             }
             .store(in: &viewModel.cancellables)
+
+        viewModel.reloadAccountSubject
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                self.tableView.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+            }
+            .store(in: &viewModel.cancellables)
     }
 
     private func registerCells() {
@@ -109,6 +116,17 @@ extension AccountDetailsViewController: UITableViewDataSource, UITableViewDelega
         let cellIdentifier = cellModel.type.rawValue
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? CustomElementCell else { return UITableViewCell() }
+
+        if let accountCell = cell as? AccountCell {
+            accountCell.favoriteSubject
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] accountCell in
+                    guard let self = self, let indexPath = tableView.indexPath(for: accountCell) else { return }
+                    self.viewModel.updateFavoriteToCoreData()
+                }
+                .store(in: &accountCell.cancellables)
+        }
+        
         cell.configure(with: cellModel)
 
         return cell as! UITableViewCell

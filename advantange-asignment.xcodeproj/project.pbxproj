@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		810095A12A21E13C00ACC526 /* CustomElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810095A02A21E13C00ACC526 /* CustomElementType.swift */; };
 		810095A52A21EA2400ACC526 /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 810095A42A21EA2400ACC526 /* AccountModel.swift */; };
+		815E39972A279FD200B0F6FE /* SaveFavoriteAccountUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E39962A279FD200B0F6FE /* SaveFavoriteAccountUC.swift */; };
+		815E39992A27A32300B0F6FE /* DeleteAllFavoriteAccountsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E39982A27A32300B0F6FE /* DeleteAllFavoriteAccountsUC.swift */; };
+		815E399D2A27AD0300B0F6FE /* Array+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 815E399C2A27AD0300B0F6FE /* Array+Ext.swift */; };
 		818C77F92A2085200048FFBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77F82A2085200048FFBB /* AppDelegate.swift */; };
 		818C77FB2A2085200048FFBB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FA2A2085200048FFBB /* SceneDelegate.swift */; };
 		818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 818C77FC2A2085200048FFBB /* AccountsListViewController.swift */; };
@@ -48,6 +51,9 @@
 /* Begin PBXFileReference section */
 		810095A02A21E13C00ACC526 /* CustomElementType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomElementType.swift; sourceTree = "<group>"; };
 		810095A42A21EA2400ACC526 /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
+		815E39962A279FD200B0F6FE /* SaveFavoriteAccountUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavoriteAccountUC.swift; sourceTree = "<group>"; };
+		815E39982A27A32300B0F6FE /* DeleteAllFavoriteAccountsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAllFavoriteAccountsUC.swift; sourceTree = "<group>"; };
+		815E399C2A27AD0300B0F6FE /* Array+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Ext.swift"; sourceTree = "<group>"; };
 		818C77F52A2085200048FFBB /* advantange-asignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "advantange-asignment.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		818C77F82A2085200048FFBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		818C77FA2A2085200048FFBB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +206,7 @@
 				818C78182A20A17A0048FFBB /* UITableViewCell+Ext.swift */,
 				818C782C2A20AE7D0048FFBB /* Combine+Networking.swift */,
 				818F23292A239A7E00C68A37 /* String+Ext.swift */,
+				815E399C2A27AD0300B0F6FE /* Array+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +237,8 @@
 				818C78272A20AC500048FFBB /* FetchAccountsUC.swift */,
 				818C78372A20DAE20048FFBB /* FetchAccountDetailsUC.swift */,
 				81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */,
+				815E39962A279FD200B0F6FE /* SaveFavoriteAccountUC.swift */,
+				815E39982A27A32300B0F6FE /* DeleteAllFavoriteAccountsUC.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -342,6 +351,7 @@
 				81DCD46F2A220C7A000D6542 /* TransactionCellTableViewCell.swift in Sources */,
 				818C78322A20B9870048FFBB /* DInjection.swift in Sources */,
 				818C77FD2A2085200048FFBB /* AccountsListViewController.swift in Sources */,
+				815E399D2A27AD0300B0F6FE /* Array+Ext.swift in Sources */,
 				818C78132A208A230048FFBB /* APIAccount.swift in Sources */,
 				818C781C2A20A8010048FFBB /* Endpoint.swift in Sources */,
 				81FEAB982A21173300DBE544 /* FetchTransactionsUC.swift in Sources */,
@@ -351,6 +361,7 @@
 				818C78302A20B91A0048FFBB /* DependencyContainer.swift in Sources */,
 				818C783B2A20DB780048FFBB /* AccountDetailsViewController.swift in Sources */,
 				818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */,
+				815E39992A27A32300B0F6FE /* DeleteAllFavoriteAccountsUC.swift in Sources */,
 				818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */,
 				818C782B2A20AC740048FFBB /* AccountsRepo.swift in Sources */,
 				818C78382A20DAE20048FFBB /* FetchAccountDetailsUC.swift in Sources */,
@@ -363,6 +374,7 @@
 				93E423752A2626EE007C3ACE /* CoreDataManager.swift in Sources */,
 				818C783F2A20E5310048FFBB /* Authorization.swift in Sources */,
 				810095A52A21EA2400ACC526 /* AccountModel.swift in Sources */,
+				815E39972A279FD200B0F6FE /* SaveFavoriteAccountUC.swift in Sources */,
 				81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */,
 				818C781E2A20A8380048FFBB /* RequestMethod.swift in Sources */,
 				818C78282A20AC500048FFBB /* FetchAccountsUC.swift in Sources */,

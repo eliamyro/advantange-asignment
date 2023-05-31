@@ -92,14 +92,19 @@ class AccountsListViewController: UIViewController {
         viewModel.$accounts
             .receive(on: DispatchQueue.main)
             .sink { _ in
-            self.accountsTableView.reloadData()
-        }
-        .store(in: &viewModel.cancellables)
+                self.accountsTableView.reloadData()
+            }
+            .store(in: &viewModel.cancellables)
     }
 
     func navigateToDetails(with account: AccountModel) {
-        let viewModel = AccountDetailsVM(account: account)
-        let accountDetailsController = AccountDetailsViewController(viewModel: viewModel)
+        let detailsVM = AccountDetailsVM(account: account)
+        let accountDetailsController = AccountDetailsViewController(viewModel: detailsVM)
+        accountDetailsController.viewModel.reloadAccountSubject
+            .receive(on: DispatchQueue.main)
+            .sink { model in
+                self.viewModel.accounts = self.viewModel.accounts.sortAccounts()
+            }.store(in: &viewModel.cancellables)
         navigationController?.show(accountDetailsController, sender: nil)
     }
 }
@@ -151,6 +156,17 @@ extension AccountsListViewController: UITableViewDataSource, UITableViewDelegate
                 as? CustomElementCell else { return UITableViewCell() }
 
         let account = viewModel.accounts[indexPath.row]
+
+        if let accountCell = cell as? AccountCell {
+            accountCell.favoriteSubject
+                .receive(on: DispatchQueue.main)
+                .sink { [weak self] accountCell in
+                    guard let self = self, let indexPath = tableView.indexPath(for: accountCell) else { return }
+                    self.viewModel.updateFavoriteToCoreData(indexPath: indexPath)
+                }
+                .store(in: &accountCell.cancellables)
+        }
+
         cell.configure(with: account)
 
         return cell as! UITableViewCell
@@ -161,3 +177,5 @@ extension AccountsListViewController: UITableViewDataSource, UITableViewDelegate
         navigateToDetails(with: account)
     }
 }
+
+

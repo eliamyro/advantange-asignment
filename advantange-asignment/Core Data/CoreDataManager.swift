@@ -79,4 +79,35 @@ extension CoreDataManager {
             return Just(false).eraseToAnyPublisher()
         }
     }
+
+    func deleteAllFavoriteAccounts() -> AnyPublisher<Bool, Never> {
+        let context = persistentContainer.viewContext
+
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = CDAccount.fetchRequest()
+
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try context.execute(deleteRequest)
+            return Just(true).eraseToAnyPublisher()
+        } catch {
+            print(error)
+            return Just(false).eraseToAnyPublisher()
+        }
+    }
+
+    func isFavorite(id: String) -> Bool {
+        let context = persistentContainer.viewContext
+
+        let fetchRequest: NSFetchRequest<CDAccount> = CDAccount.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id)
+
+        do {
+            let result = try context.fetch(fetchRequest)
+            return !result.isEmpty
+        } catch {
+            print(error)
+            return false
+        }
+    }
 }

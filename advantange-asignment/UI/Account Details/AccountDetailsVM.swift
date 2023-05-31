@@ -16,8 +16,11 @@ struct Section {
 class AccountDetailsVM {
     @Injected var fetchAccountDetailsUC: FetchAccountDetailsUC
     @Injected var fetchTransactionsUC: FetchTransactionsUC
+    @Injected var saveFavoriteAccountUC: SaveFavoriteAccountUC
+    @Injected var deleteAllFavoriteAccountsUC: DeleteAllFavoriteAccountsUC
 
     var loaderSubject = CurrentValueSubject<Bool, Never>(false)
+    var reloadAccountSubject = PassthroughSubject<AccountModel, Never>()
     @Published var data = [Section]()
     var cancellables = Set<AnyCancellable>()
 
@@ -99,6 +102,27 @@ class AccountDetailsVM {
                 self.loaderSubject.send(false)
                 if let response = transactionsResponse {
                     self.appendTransactions(transactionsResponse: response)
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    func updateFavoriteToCoreData() {
+        let isFavorite = account.isFavorite
+
+        deleteAllFavoriteAccountsUC.execute()
+            .sink { [weak self] isDeleted in
+                guard let self = self else { return }
+                if isDeleted {
+                    if isFavorite {
+                        self.reloadAccountSubject.send(self.account)
+                    } else {
+                        self.saveFavoriteAccountUC.execute(account: self.account)
+                            .sink(receiveValue: { isSaved in
+                                if isSaved { self.reloadAccountSubject.send(self.account) }
+                            })
+                            .store(in: &self.cancellables)
+                    }
                 }
             }
             .store(in: &cancellables)

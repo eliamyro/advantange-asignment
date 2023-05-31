@@ -30,6 +30,7 @@ class DInjection: DependencyContainer {
 
     private func registerSources() {
         register(HTTPClient.self) { HTTPClientImp() }
+        register(CoreDataManager.self) { CoreDataManager.shared }
     }
 
     private func registerRepositories() {
@@ -40,5 +41,7 @@ class DInjection: DependencyContainer {
         register(FetchAccountsUC.self) { FetchAccountsUCImp() }
         register(FetchAccountDetailsUC.self) { FetchAccountDetailsUCImp() }
         register(FetchTransactionsUC.self) { FetchTransactionUCImp() }
+        register(SaveFavoriteAccountUC.self) { SaveFavoriteAccountUCImp() }
+        register(DeleteAllFavoriteAccountsUC.self) { DeleteAllFavoriteAccountsUCImp() }
     }
 }

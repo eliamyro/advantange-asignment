@@ -10,6 +10,8 @@ import Foundation
 
 class AccountsListVM {
     @Injected var fetchAccountsUC: FetchAccountsUC
+    @Injected var saveFavoriteAccountUC: SaveFavoriteAccountUC
+    @Injected var deleteAllFavoriteAccountsUC: DeleteAllFavoriteAccountsUC
 
     @Published var accounts: [AccountModel] = []
     var loaderSubject = CurrentValueSubject<Bool, Never>(false)
@@ -27,7 +29,31 @@ class AccountsListVM {
             } receiveValue: { [weak self] accounts in
                 guard let self = self else { return }
                 self.loaderSubject.send(false)
-                self.accounts = accounts
+                self.accounts = accounts.sortAccounts()
+            }
+            .store(in: &cancellables)
+    }
+
+    func updateFavoriteToCoreData(indexPath: IndexPath) {
+        let isFavorite = accounts[indexPath.row].isFavorite
+        let account = accounts[indexPath.row]
+
+        deleteAllFavoriteAccountsUC.execute()
+            .sink { [weak self] isDeleted in
+                guard let self = self else { return }
+                if isDeleted {
+                    if isFavorite {
+                        self.accounts = self.accounts.sortAccounts()
+                    } else {
+                        self.saveFavoriteAccountUC.execute(account: account)
+                            .sink(receiveValue: { isSaved in
+                                if isSaved {
+                                    self.accounts = self.accounts.sortAccounts()
+                                }
+                            })
+                            .store(in: &self.cancellables)
+                    }
+                }
             }
             .store(in: &cancellables)
     }
