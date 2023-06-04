@@ -61,6 +61,8 @@ class AccountDetailsViewController: UIViewController {
     private func setupUI() {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Account Details"
+        let filterButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(filterTransactions))
+        navigationItem.rightBarButtonItem = filterButton
     }
 
     private func bind() {
@@ -94,6 +96,22 @@ class AccountDetailsViewController: UIViewController {
         tableView.register(AccountCell.self, forCellReuseIdentifier: CustomElementType.account.rawValue)
         tableView.register(AccountDetailsCell.self, forCellReuseIdentifier: CustomElementType.details.rawValue)
         tableView.register(TransactionCellTableViewCell.self, forCellReuseIdentifier: CustomElementType.transaction.rawValue)
+    }
+
+    @objc private func filterTransactions() {
+        let controller = TransactionsDateRangeViewController()
+        controller.transactionsFromDate = viewModel.transactionFromDate
+        controller.transactionToDate = viewModel.transactionToDate
+        
+        controller.dateRange
+            .sink { (fromDate, toDate) in
+                self.viewModel.transactionFromDate = fromDate
+                self.viewModel.transactionToDate = toDate
+                self.viewModel.fetchTransactionsWithDateRange()
+            }
+            .store(in: &controller.cancellable)
+
+        navigationController?.present(controller, animated: true)
     }
 }
 

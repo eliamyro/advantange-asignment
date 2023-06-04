@@ -27,6 +27,8 @@ class AccountDetailsVM {
     var account: AccountModel
     var page = 0
     var pagesCount = 0
+    var transactionFromDate: String?
+    var transactionToDate: String?
 
     init(account: AccountModel) {
         self.account = account
@@ -83,7 +85,7 @@ class AccountDetailsVM {
     }
 
     func fetchTransactions() -> AnyPublisher<TransactionsResponseModel?, Never> {
-        return fetchTransactionsUC.execute(accountId: account.id ?? "", page: page, fromDate: nil, toDate: nil)
+        return fetchTransactionsUC.execute(accountId: account.id ?? "", page: page, fromDate: transactionFromDate, toDate: transactionToDate)
             .catch { error -> Just<TransactionsResponseModel?> in
                 print(error)
                 return Just(nil)
@@ -123,6 +125,30 @@ class AccountDetailsVM {
                             })
                             .store(in: &self.cancellables)
                     }
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    func fetchTransactionsWithDateRange() {
+        // Initialize values
+        pagesCount = 0
+        page = 0
+
+        // Remove the existing transactions
+        if 2 < data.count {
+            data.removeSubrange(2...)
+        }
+
+        self.loaderSubject.send(true)
+
+        fetchTransactions()
+            .receive(on: DispatchQueue.main)
+            .sink { transactionsResponse in
+                self.loaderSubject.send(false)
+
+                if let response = transactionsResponse {
+                    self.appendTransactions(transactionsResponse: response)
                 }
             }
             .store(in: &cancellables)

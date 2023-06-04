@@ -44,6 +44,7 @@
 		81DCD46F2A220C7A000D6542 /* TransactionCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */; };
 		81FEAB962A21153100DBE544 /* APITransactionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FEAB952A21153100DBE544 /* APITransactionsResponse.swift */; };
 		81FEAB982A21173300DBE544 /* FetchTransactionsUC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */; };
+		93299B302A28D2AF0084C7D9 /* TransactionsDateRangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93299B2F2A28D2AF0084C7D9 /* TransactionsDateRangeViewController.swift */; };
 		93E423752A2626EE007C3ACE /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E423742A2626EE007C3ACE /* CoreDataManager.swift */; };
 		93E423782A262771007C3ACE /* AdvantageDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 93E423762A262771007C3ACE /* AdvantageDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		81DCD46E2A220C7A000D6542 /* TransactionCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionCellTableViewCell.swift; sourceTree = "<group>"; };
 		81FEAB952A21153100DBE544 /* APITransactionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APITransactionsResponse.swift; sourceTree = "<group>"; };
 		81FEAB972A21173300DBE544 /* FetchTransactionsUC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTransactionsUC.swift; sourceTree = "<group>"; };
+		93299B2F2A28D2AF0084C7D9 /* TransactionsDateRangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsDateRangeViewController.swift; sourceTree = "<group>"; };
 		93E423742A2626EE007C3ACE /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		93E423772A262771007C3ACE /* AdvantageDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AdvantageDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -266,6 +268,7 @@
 			children = (
 				818C783A2A20DB780048FFBB /* AccountDetailsViewController.swift */,
 				818C783C2A20DB870048FFBB /* AccountDetailsVM.swift */,
+				93299B2F2A28D2AF0084C7D9 /* TransactionsDateRangeViewController.swift */,
 			);
 			path = "Account Details";
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				818C78302A20B91A0048FFBB /* DependencyContainer.swift in Sources */,
 				818C783B2A20DB780048FFBB /* AccountDetailsViewController.swift in Sources */,
 				818C78232A20AACD0048FFBB /* HTTPClient.swift in Sources */,
+				93299B302A28D2AF0084C7D9 /* TransactionsDateRangeViewController.swift in Sources */,
 				815E39992A27A32300B0F6FE /* DeleteAllFavoriteAccountsUC.swift in Sources */,
 				818C782D2A20AE7D0048FFBB /* Combine+Networking.swift in Sources */,
 				818C782B2A20AC740048FFBB /* AccountsRepo.swift in Sources */,
