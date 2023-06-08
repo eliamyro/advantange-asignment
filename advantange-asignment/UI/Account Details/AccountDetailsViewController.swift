@@ -62,7 +62,8 @@ class AccountDetailsViewController: UIViewController {
         view.backgroundColor = .systemBackground
         navigationItem.title = "Account Details"
         let filterButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(filterTransactions))
-        navigationItem.rightBarButtonItem = filterButton
+        let resetButton = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(resetFiltering))
+        navigationItem.setRightBarButtonItems([filterButton, resetButton], animated: true)
     }
 
     private func bind() {
@@ -102,16 +103,20 @@ class AccountDetailsViewController: UIViewController {
         let controller = TransactionsDateRangeViewController()
         controller.transactionsFromDate = viewModel.transactionFromDate
         controller.transactionToDate = viewModel.transactionToDate
+        controller.modalPresentationStyle = .overFullScreen
+        controller.modalTransitionStyle = .crossDissolve
         
         controller.dateRange
             .sink { (fromDate, toDate) in
-                self.viewModel.transactionFromDate = fromDate
-                self.viewModel.transactionToDate = toDate
-                self.viewModel.fetchTransactionsWithDateRange()
+                self.viewModel.fetchTransactionsWithDateRange(fromDate: fromDate, toDate: toDate)
             }
             .store(in: &controller.cancellable)
 
         navigationController?.present(controller, animated: true)
+    }
+
+    @objc private func resetFiltering() {
+        viewModel.fetchTransactionsWithDateRange()
     }
 }
 

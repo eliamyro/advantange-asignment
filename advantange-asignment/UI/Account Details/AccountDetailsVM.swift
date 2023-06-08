@@ -130,10 +130,13 @@ class AccountDetailsVM {
             .store(in: &cancellables)
     }
 
-    func fetchTransactionsWithDateRange() {
+    func fetchTransactionsWithDateRange(fromDate: String? = nil, toDate: String? = nil) {
         // Initialize values
         pagesCount = 0
         page = 0
+
+        self.transactionFromDate = fromDate
+        self.transactionToDate = toDate
 
         // Remove the existing transactions
         if 2 < data.count {

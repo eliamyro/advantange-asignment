@@ -30,6 +30,15 @@ class TransactionsDateRangeViewController: UIViewController {
         return view
     }()
 
+    private lazy var dismissButton: UIButton = {
+        let button = UIButton(type: .close)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
+
+        return button
+    }()
+
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .semibold)
@@ -67,8 +76,10 @@ class TransactionsDateRangeViewController: UIViewController {
     }()
 
     private lazy var okButton: UIButton = {
-        let button = UIButton()
-        button.backgroundColor = .systemGreen
+        let button = UIButton(type: .system)
+        button.backgroundColor = .systemBlue
+        button.tintColor = .white
+        button.layer.cornerRadius = 10
         button.setTitle("OK", for: .normal)
         button.addTarget(self, action: #selector(dismissView), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -96,21 +107,15 @@ class TransactionsDateRangeViewController: UIViewController {
         self.dismiss(animated: true)
     }
 
+    @objc private func dismissTapped() {
+        self.dismiss(animated: true)
+    }
 
     func handleDateRanges() {
-        let selectedDate1 = fromDatePicker.date
-        let selectedDate2 = toDatePicker.date
+        let fromDate = fromDatePicker.date.formatedDateToString()
+        let toDate = toDatePicker.date.formatedDateToString()
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'Z'"
-
-        let formattedDate1 = dateFormatter.string(from: selectedDate1)
-        let formattedDate2 = dateFormatter.string(from: selectedDate2)
-
-        dateRange.send((from: formattedDate1, to: formattedDate2))
-
-        print("Selected Date 1: \(formattedDate1)")
-        print("Selected Date 2: \(formattedDate2)")
+        dateRange.send((from: fromDate, to: toDate))
     }
 }
 
@@ -119,6 +124,7 @@ class TransactionsDateRangeViewController: UIViewController {
 extension TransactionsDateRangeViewController {
     func configureUI() {
         configureContainerView()
+        configureDismissButton()
         configureTitleLabel()
         configurePickersStackView()
         configureOKButton()
@@ -132,6 +138,17 @@ extension TransactionsDateRangeViewController {
             containerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             containerView.widthAnchor.constraint(equalToConstant: 300),
             containerView.heightAnchor.constraint(equalToConstant: 200)
+        ])
+    }
+
+    private func configureDismissButton() {
+        containerView.addSubview(dismissButton)
+
+        NSLayoutConstraint.activate([
+            dismissButton.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 8),
+            dismissButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 8),
+            dismissButton.widthAnchor.constraint(equalToConstant: 32),
+            dismissButton.heightAnchor.constraint(equalToConstant: 32)
         ])
     }
 
@@ -162,7 +179,8 @@ extension TransactionsDateRangeViewController {
             okButton.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
             okButton.topAnchor.constraint(equalTo: fromDatePicker.bottomAnchor, constant: 16),
             okButton.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -8),
-            okButton.heightAnchor.constraint(equalToConstant: 40)
+            okButton.heightAnchor.constraint(equalToConstant: 40),
+            okButton.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
 }
