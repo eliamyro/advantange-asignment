@@ -9,6 +9,7 @@ import Combine
 import Foundation
 
 class AccountsListVM {
+    
     @Injected var fetchAccountsUC: FetchAccountsUC
     @Injected var saveFavoriteAccountUC: SaveFavoriteAccountUC
     @Injected var deleteAllFavoriteAccountsUC: DeleteAllFavoriteAccountsUC
